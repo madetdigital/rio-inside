@@ -4463,6 +4463,10 @@ video {
 .final-gallery-track {
   display: flex;
 
+  flex-wrap: nowrap;
+
+  gap: 0;
+
   width: max-content;
 
   animation:
@@ -4479,6 +4483,8 @@ video {
   display: flex;
 
   flex-shrink: 0;
+
+  width: max-content;
 
   gap: 14px;
 
@@ -4568,7 +4574,7 @@ video {
 
   .final-gallery-track {
     animation-duration:
-      60s;
+      64s;
   }
 
   .final-gallery-group {
@@ -4760,8 +4766,6 @@ video {
   }
 
   .final-gallery-track {
-    gap: 10px;
-
     animation-duration: 64s;
   }
 
