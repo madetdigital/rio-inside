@@ -15,7 +15,7 @@ const translations = {
     button: "CONHECER O GUIA",
     checkout: "https://pay.kiwify.com.br/Y3jYzH7",
     play: "Reproduzir vídeo",
-    video: "/videos/quem-somos-pt.mp4",
+    video: "/videos/quem-somos-pt.MP4",
   },
 
   EN: {
@@ -29,7 +29,7 @@ const translations = {
     button: "DISCOVER THE GUIDE",
     checkout: "https://pay.kiwify.com/jc86map",
     play: "Play video",
-    video: "/videos/quem-somos-en.mp4",
+    video: "/videos/quem-somos-en.MP4",
   },
 
   ES: {
@@ -43,7 +43,7 @@ const translations = {
     button: "CONOCER LA GUÍA",
     checkout: "https://pay.kiwify.com/6jXfr1L",
     play: "Reproducir vídeo",
-    video: "/videos/quem-somos-es.mp4",
+    video: "/videos/quem-somos-es.MP4",
   },
 };
 
