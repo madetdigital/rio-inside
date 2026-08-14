@@ -1,26 +1,4943 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f1ea;
+  --foreground: #111111;
+  --accent: #f05a28;
+  --white: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+.gallery-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: gallery-scroll 35s linear infinite;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 28vw;
+  height: 72vh;
+  min-width: 280px;
+  max-width: 460px;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+@keyframes gallery-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 7px));
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-track {
+    gap: 10px;
+    animation-duration: 25s;
+  }
+
+  .gallery-item {
+    width: 72vw;
+    min-width: 72vw;
+    height: 65vh;
+  }
+}
+
+
+/* ==========================================================
+   QUEM SOMOS — RIO INSIDE
+========================================================== */
+
+.about-section {
+  width: 100%;
+
+  background: #f5f3ee;
+  color: #080808;
+
+  padding: 100px 0 130px;
+
+  overflow: hidden;
+}
+
+
+/* CONTAINER */
+
+.about-container {
+  width: 100%;
+
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+
+/* PEQUENO "QUEM SOMOS" */
+
+.about-label {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 65px;
+
+  text-align: center;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.32em;
+
+  color: #080808;
+}
+
+
+/* ==========================================================
+   CONTEÚDO PRINCIPAL
+========================================================== */
+
+.about-content {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 40% 60%;
+
+  align-items: center;
+
+  min-height: 700px;
+}
+
+
+/* ==========================================================
+   ÁREA DO CELULAR
+========================================================== */
+
+.about-phone-area {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* CELULAR */
+
+.about-phone {
+  position: relative;
+
+  width: min(330px, 80%);
+
+  aspect-ratio: 9 / 19.5;
+
+  padding: 8px;
+
+  background: #080808;
+
+  border: 2px solid #292929;
+
+  border-radius: 48px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 30px 55px rgba(0, 0, 0, 0.14),
+    0 8px 18px rgba(0, 0, 0, 0.09);
+}
+
+
+/* VÍDEO */
+
+.about-video {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  background:
+    linear-gradient(
+      145deg,
+      #2b2a26,
+      #11110f
+    );
+
+  border-radius: 39px;
+
+  cursor: pointer;
+}
+
+
+/* ==========================================================
+   DYNAMIC ISLAND
+========================================================== */
+
+.about-phone-island {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 92px;
+  height: 27px;
+
+  border-radius: 999px;
+
+  background: #050505;
+
+  pointer-events: none;
+}
+
+
+/* ==========================================================
+   BOTÃO PLAY
+========================================================== */
+
+.about-play {
+  position: absolute;
+
+  z-index: 6;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 94px;
+  height: 94px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(2px);
+
+  cursor: pointer;
+
+  transition:
+    transform 250ms ease,
+    background 250ms ease;
+}
+
+
+.about-play:hover {
+  transform:
+    translate(-50%, -50%)
+    scale(1.06);
+
+  background: rgba(0, 0, 0, 0.25);
+}
+
+
+/* TRIÂNGULO DO PLAY */
+
+.about-play span {
+  display: block;
+
+  width: 0;
+  height: 0;
+
+  margin-left: 7px;
+
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 23px solid white;
+}
+
+
+/* ==========================================================
+   ÁREA DE TEXTO
+========================================================== */
+
+.about-text {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 3vw;
+}
+
+
+.about-copy {
+  width: 100%;
+
+  max-width: 900px;
+}
+
+
+/* TÍTULO */
+
+.about-text h2 {
+  width: 100%;
+
+  margin: 0;
+
+  color: #080808;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(58px, 5.8vw, 105px);
+
+  font-weight: 400;
+
+  line-height: 0.88;
+
+  letter-spacing: -0.065em;
+
+  text-transform: uppercase;
+}
+
+
+/* TEXTO */
+
+.about-copy p {
+  width: 80%;
+  max-width: 700px;
+
+  /* alinha o início do texto com o início do título */
+  margin: 55px 0 0 0;
+
+  color: #282828;
+
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 400;
+
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+
+  text-align: justify;
+  text-align-last: left;
+}
+
+.about-badges {
+  margin-top: 1cm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1cm;
+}
+
+.about-badges span {
+  min-height: 58px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #554c40;
+  color: #554c40;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+.about-guide-button {
+  width: min(100%, 480px);
+  min-height: 76px;
+  margin-top: 1.2cm;
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #171512;
+  color: #171512;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 250ms ease, color 250ms ease;
+}
+
+.about-guide-button:hover {
+  background: #171512;
+  color: #fff;
+}
+
+.about-guide-button span:last-child {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+  .about-section {
+    padding:
+      90px
+      0
+      110px;
+  }
+
+  .about-content {
+    grid-template-columns:
+      42%
+      58%;
+
+    min-height: 620px;
+  }
+
+  .about-phone {
+    width: min(290px, 82%);
+  }
+
+  .about-text {
+    padding-left: 4vw;
+  }
+
+  .about-text h2 {
+    font-size: clamp(
+      48px,
+      6vw,
+      72px
+    );
+  }
+
+  .about-copy p {
+    width: 90%;
+
+    margin-top: 40px;
+
+    font-size: 16px;
+  }
+}
+
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .about-section {
+    padding:
+      70px
+      0
+      85px;
+  }
+
+
+  .about-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .about-label {
+    margin-bottom: 50px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.3em;
+  }
+
+
+  .about-content {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: auto;
+
+    gap: 60px;
+  }
+
+
+  /* CELULAR */
+
+  .about-phone-area {
+    height: auto;
+  }
+
+
+  .about-phone {
+    width: min(
+      285px,
+      78vw
+    );
+
+    border-radius: 43px;
+  }
+
+
+  .about-video {
+    border-radius: 35px;
+  }
+
+
+  .about-phone-island {
+    width: 82px;
+    height: 24px;
+
+    top: 17px;
+  }
+
+
+  .about-play {
+    width: 76px;
+    height: 76px;
+  }
+
+
+  .about-play span {
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 18px;
+  }
+
+
+  /* TEXTO */
+
+  .about-text {
+    width: 100%;
+
+    height: auto;
+
+    padding-left: 0;
+  }
+
+
+  .about-copy {
+    width: 100%;
+
+    max-width: none;
+  }
+
+
+  .about-text h2 {
+    width: 100%;
+
+    font-size: clamp(
+      44px,
+      12.8vw,
+      68px
+    );
+
+    line-height: 0.9;
+
+    letter-spacing: -0.06em;
+  }
+
+
+  .about-copy p {
+    width: 100%;
+
+    max-width: 520px;
+
+    margin:
+      35px
+      auto
+      0;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    text-align: left;
+  }
+
+  .about-badges {
+    gap: 1cm;
+  }
+
+  .about-badges span {
+    width: 100%;
+  }
+
+  .about-guide-button {
+    width: 100%;
+  }
+}
+
+/* ==========================================================
+   QUEM SOMOS — HISTÓRIA
+========================================================== */
+
+.about-story {
+  width: 100%;
+  background: #f5f3ee;
+  color: #111;
+
+  padding: 90px 5vw 100px;
+  margin-top: 0;
+}
+
+.about-story-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   TÍTULO
+========================================================== */
+
+.about-story-heading {
+  width: 100%;
+  margin-bottom: 55px;
+}
+
+.about-story-heading h2 {
+  width: 100%;
+  max-width: 1320px;
+
+  margin: 0;
+
+  font-size: clamp(35px, 3.35vw, 55px);
+  font-weight: 400;
+
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+
+/* ==========================================================
+   TEXTO + CARROSSEL
+========================================================== */
+
+.about-story-body {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(420px, 1fr);
+
+  gap: clamp(70px, 8vw, 130px);
+
+  align-items: stretch;
+}
+
+
+/* ==========================================================
+   TEXTO
+========================================================== */
+
+.about-story-content {
+  width: 100%;
+  max-width: 640px;
+}
+
+.about-story-text {
+  width: 100%;
+}
+
+.about-story-text p {
+  margin: 0 0 22px;
+
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: #343434;
+}
+
+.about-story-text p:first-child {
+  margin-top: 0;
+}
+
+.about-story-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-story-button {
+  width: min(100%, 370px);
+  min-height: 60px;
+  margin-top: 1cm;
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #171717;
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  transition:
+    background 250ms ease,
+    transform 250ms ease;
+}
+
+.about-story-button:hover {
+  background: #2a2a2a;
+  transform: translateY(-2px);
+}
+
+.about-story-button > span:last-child {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+
+/* ==========================================================
+   CARROSSEL
+========================================================== */
+
+.about-story-carousel {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.about-story-carousel-frame {
+  position: relative;
+
+  width: min(100%, 610px);
+  height: 100%;
+  min-height: 100%;
+
+  overflow: hidden;
+
+  background: #dedbd4;
+}
+
+.about-story-slide {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: scale(1.025);
+
+  transition:
+    opacity 1s ease,
+    transform 1.4s ease,
+    visibility 1s ease;
+}
+
+.about-story-slide.active {
+  opacity: 1;
+  visibility: visible;
+
+  transform: scale(1);
+}
+
+.about-story-image {
+  object-fit: cover;
+}
+
+
+/* ==========================================================
+   BOLINHAS DO CARROSSEL
+========================================================== */
+
+.about-story-dots {
+  position: absolute;
+
+  z-index: 5;
+
+  bottom: 24px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 9px;
+}
+
+.about-story-dot {
+  width: 7px;
+  height: 7px;
+
+  padding: 0;
+
+  border: 1px solid #fff;
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.about-story-dot.active {
+  background: #fff;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+
+  .about-story-heading h2 {
+    font-size: clamp(34px, 4vw, 46px);
+  }
+
+  .about-story-body {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+}
+
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media (max-width: 780px) {
+
+  .about-story {
+    padding: 30px 20px 75px;
+  }
+
+  .about-story-heading {
+    margin-bottom: 40px;
+  }
+
+  .about-story-heading h2 {
+    font-size: clamp(30px, 7.5vw, 39px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .about-story-body {
+    display: flex;
+    flex-direction: column;
+
+    gap: 45px;
+  }
+
+  .about-story-content {
+    max-width: none;
+  }
+
+  .about-story-carousel {
+    height: auto;
+    justify-content: center;
+  }
+
+  .about-story-carousel-frame {
+    width: 100%;
+    max-width: 540px;
+
+    height: auto;
+    min-height: 0;
+
+    aspect-ratio: 4 / 5;
+  }
+
+}
+/* DIMINUI O ESPAÇO ENTRE A GALERIA E O QUEM SOMOS */
+.about-section {
+  margin-top: -75px;
+}
+
+/* ==========================================================
+   QUEM SOMOS — CONTINUAÇÃO
+========================================================== */
+
+.about-next {
+  width: 100%;
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f5f3ee;
+  color: #080808;
+
+  padding: 75px 5vw 90px;
+}
+
+.about-next-container {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* TÍTULO */
+
+.about-next h2 {
+  width: 100%;
+  max-width: 1150px;
+
+  margin: 0;
+
+  font-size: clamp(54px, 5.2vw, 82px);
+  font-weight: 400;
+
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+
+  color: #080808;
+}
+
+/* LINHA */
+
+.about-next-line {
+  width: 145px;
+  height: 3px;
+
+  margin: 42px auto 42px;
+
+  background: #080808;
+}
+
+/* TEXTO PRINCIPAL */
+
+.about-next-intro {
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  font-size: clamp(18px, 1.45vw, 23px);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+
+  color: #242424;
+}
+
+/* FRASES FINAIS */
+
+.about-next-final {
+  margin-top: 48px;
+
+  font-size: clamp(17px, 1.3vw, 21px);
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  color: #242424;
+}
+
+.about-next-final p {
+  margin: 0;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+  .about-next {
+    min-height: 560px;
+    padding: 65px 5vw 80px;
+  }
+
+  .about-next h2 {
+    font-size: clamp(48px, 6vw, 68px);
+  }
+
+  .about-next-line {
+    margin: 36px auto;
+  }
+
+}
+
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .about-next {
+    min-height: auto;
+
+    padding:
+      65px
+      20px
+      75px;
+  }
+
+  .about-next h2 {
+    max-width: 600px;
+
+    font-size: clamp(40px, 11vw, 58px);
+
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .about-next-line {
+    width: 100px;
+    height: 2px;
+
+    margin:
+      32px
+      auto;
+  }
+
+  .about-next-intro {
+    max-width: 540px;
+
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .about-next-final {
+    margin-top: 35px;
+
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+}
+
+/* ==========================================================
+   ABOUT CURATION — CONTINUAÇÃO DO QUEM SOMOS
+========================================================== */
+
+.about-curation {
+  width: 100%;
+  background: #f5f3ee;
+  color: #080808;
+
+  padding: 55px 5vw 90px;
+}
+
+.about-curation-container {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* ==========================================================
+   TÍTULO
+========================================================== */
+
+.about-curation-title {
+  width: 100%;
+  max-width: 1150px;
+
+  margin: 0;
+
+  color: #080808;
+
+  font-size: clamp(52px, 5vw, 80px);
+  font-weight: 400;
+
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+
+/* ==========================================================
+   LINHA
+========================================================== */
+
+.about-curation-line {
+  width: 145px;
+  height: 3px;
+
+  margin: 40px auto;
+
+  background: #080808;
+}
+
+
+/* ==========================================================
+   TEXTO PRINCIPAL
+========================================================== */
+
+.about-curation-description {
+  width: 100%;
+  max-width: 1080px;
+
+  margin: 0 auto;
+
+  color: #242424;
+
+  font-size: clamp(18px, 1.4vw, 22px);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+
+/* ==========================================================
+   TEXTO FINAL
+========================================================== */
+
+.about-curation-final {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 45px auto 0;
+
+  color: #242424;
+
+  font-size: clamp(17px, 1.25vw, 20px);
+  font-weight: 400;
+
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+
+  white-space: pre-line;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+  .about-curation {
+    padding: 50px 5vw 80px;
+  }
+
+  .about-curation-title {
+    max-width: 900px;
+
+    font-size: clamp(46px, 6vw, 66px);
+  }
+
+  .about-curation-line {
+    margin: 35px auto;
+  }
+
+  .about-curation-description {
+    max-width: 850px;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .about-curation {
+    padding: 45px 20px 70px;
+  }
+
+  .about-curation-title {
+    max-width: 600px;
+
+    font-size: clamp(38px, 10.5vw, 54px);
+
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .about-curation-line {
+    width: 100px;
+    height: 2px;
+
+    margin: 30px auto;
+  }
+
+  .about-curation-description {
+    max-width: 540px;
+
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .about-curation-final {
+    max-width: 540px;
+
+    margin-top: 35px;
+
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+}
+
+/* ==========================================================
+   O QUE ESPERA POR VOCÊ — RIO INSIDE
+========================================================== */
+
+.inside-experience {
+  position: relative;
+
+  width: 100%;
+  min-height: 900px;
+
+  overflow: hidden;
+
+  color: #fff;
+}
+
+
+/* ==========================================================
+   FOTO DE FUNDO
+========================================================== */
+
+.inside-experience-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/inside-bg.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  transform: scale(1.02);
+}
+
+
+/* escurecimento */
+
+.inside-experience-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(15, 14, 12, 0.48);
+}
+
+
+/* camada que deixa a foto mais clean */
+
+.inside-experience-wash {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(245, 243, 238, 0.12) 0%,
+      rgba(20, 19, 17, 0.06) 45%,
+      rgba(10, 10, 9, 0.32) 100%
+    );
+
+  backdrop-filter:
+    saturate(0.7)
+    contrast(0.9);
+}
+
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.inside-experience-container {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    95px
+    0
+    100px;
+}
+
+
+/* ==========================================================
+   TÍTULO — OCUPA A PÁGINA
+========================================================== */
+
+.inside-experience-heading {
+  width: 100%;
+
+  padding:
+    0
+    4.5vw;
+
+  margin-bottom: 75px;
+}
+
+.inside-experience-heading h2 {
+  width: 100%;
+  max-width: none;
+
+  margin: 0;
+
+  font-size: clamp(
+    54px,
+    6.1vw,
+    100px
+  );
+
+  font-weight: 400;
+
+  line-height: 0.93;
+
+  letter-spacing: -0.055em;
+
+  text-transform: uppercase;
+
+  color: #fff;
+}
+
+
+/* ==========================================================
+   CARROSSEL
+========================================================== */
+
+.inside-experience-carousel {
+  width: 100%;
+}
+
+.inside-experience-viewport {
+  width: 100%;
+
+  overflow: hidden;
+
+  padding-left: 4.5vw;
+}
+
+.inside-experience-track {
+  display: flex;
+
+  gap: 18px;
+
+  width: max-content;
+
+  transition:
+    transform
+    900ms
+    cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform;
+}
+
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.inside-experience-card {
+  flex: 0 0 29vw;
+  width: 29vw;
+
+  min-width: 350px;
+  max-width: 455px;
+
+  min-height: 310px;
+
+  padding: 28px 30px 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(245, 243, 238, 0.84);
+  color: #101010;
+
+  border: 1px solid rgba(255, 255, 255, 0.32);
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* NÚMERO */
+
+.inside-experience-number {
+  font-size: 11px;
+
+  letter-spacing: 0.25em;
+
+  color: #686868;
+}
+
+
+/* LINHA INTERNA */
+
+.inside-experience-card-line {
+  width: 42px;
+  height: 1px;
+
+  margin:
+    20px
+    0
+    27px;
+
+  background: #111;
+}
+
+
+/* TÍTULO DO CARD */
+
+.inside-experience-card h3 {
+  width: 100%;
+  max-width: 390px;
+
+  margin: 0;
+
+  font-size: clamp(
+    26px,
+    2vw,
+    35px
+  );
+
+  font-weight: 400;
+
+  line-height: 1.04;
+
+  letter-spacing: -0.04em;
+}
+
+
+/* TEXTO */
+
+.inside-experience-card p {
+  width: 100%;
+  max-width: 390px;
+
+  margin:
+    28px
+    0
+    0;
+
+  padding: 0;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.48;
+
+  color: #333;
+}
+
+
+/* ==========================================================
+   INDICADORES
+========================================================== */
+
+.inside-experience-dots {
+  margin-top: 34px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.inside-experience-dot {
+  width: 7px;
+  height: 7px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.9);
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition:
+    width 300ms ease,
+    background 300ms ease;
+}
+
+.inside-experience-dot.active {
+  width: 30px;
+
+  background: #fff;
+}
+
+
+/* ==========================================================
+   FRASE FINAL
+========================================================== */
+
+.inside-experience-closing {
+  width: 100%;
+
+  padding:
+    0
+    4.5vw;
+
+  margin-top: 80px;
+}
+
+.inside-experience-closing p {
+  width: 100%;
+  max-width: 1380px;
+
+  margin: 0;
+
+  font-size: clamp(
+    38px,
+    4vw,
+    67px
+  );
+
+  font-weight: 400;
+
+  line-height: 1.02;
+
+  letter-spacing: -0.045em;
+
+  color: #fff;
+}
+
+
+/* DESTAQUES */
+
+.inside-experience-closing strong {
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+
+  .inside-experience {
+    min-height: 820px;
+  }
+
+  .inside-experience-heading h2 {
+    font-size: clamp(
+      52px,
+      7vw,
+      78px
+    );
+  }
+
+  .inside-experience-card {
+    flex-basis: 43vw;
+
+    width: 43vw;
+
+    min-width: 340px;
+
+    min-height: 300px;
+
+    border-radius: 14px;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .inside-experience {
+    min-height: auto;
+  }
+
+  .inside-experience-container {
+    padding:
+      70px
+      0
+      75px;
+  }
+
+  .inside-experience-heading {
+    padding:
+      0
+      20px;
+
+    margin-bottom: 50px;
+  }
+
+  .inside-experience-heading h2 {
+    font-size: clamp(
+      43px,
+      12vw,
+      63px
+    );
+
+    line-height: 0.95;
+  }
+
+  .inside-experience-viewport {
+    padding-left: 20px;
+  }
+
+  .inside-experience-track {
+    gap: 12px;
+  }
+
+  .inside-experience-card {
+    flex:
+      0
+      0
+      83vw;
+
+    width: 83vw;
+
+    min-width: 0;
+
+    min-height: 325px;
+
+    padding:
+      25px
+      24px
+      28px;
+
+    border-radius: 12px;
+  }
+
+  .inside-experience-card h3 {
+    font-size: clamp(
+      27px,
+      7.5vw,
+      35px
+    );
+  }
+
+  .inside-experience-card p {
+    margin-top: 24px;
+
+    font-size: 15px;
+
+    line-height: 1.45;
+  }
+
+  .inside-experience-closing {
+    padding:
+      0
+      20px;
+
+    margin-top: 60px;
+  }
+
+  .inside-experience-closing p {
+    font-size: clamp(
+      31px,
+      8.5vw,
+      44px
+    );
+
+    line-height: 1.04;
+  }
+
+}
+
+/* ==========================================================
+   ARREDONDAMENTO DAS IMAGENS — QUEM SOMOS
+========================================================== */
+
+/* Todas as imagens da seção Quem Somos */
+#quem-somos img {
+  border-radius: 12px;
+}
+
+
+/* Garante que imagens/carrosséis não ultrapassem as bordas */
+#quem-somos picture,
+#quem-somos figure {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   EBOOK SALES
+========================================================== */
+
+.ebook-sales {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #f5f3ee;
+
+  color: #111;
+}
+
+
+/* ==========================================================
+   FOTO DE FUNDO
+========================================================== */
+
+.ebook-sales-background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    url("/images/ebook-background.png");
+
+  background-size: cover;
+
+  background-position:
+    center right;
+
+  transform: scale(1.025);
+
+  filter:
+    saturate(0.72)
+    contrast(0.92);
+}
+
+
+/* ==========================================================
+   FILTRO CLEAN
+========================================================== */
+
+.ebook-sales-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      rgba(245, 243, 238, 0.99) 0%,
+
+      rgba(245, 243, 238, 0.98) 30%,
+
+      rgba(245, 243, 238, 0.92) 45%,
+
+      rgba(245, 243, 238, 0.65) 63%,
+
+      rgba(245, 243, 238, 0.22) 100%
+    );
+}
+
+
+/* ==========================================================
+   CONTAINER PRINCIPAL
+========================================================== */
+
+.ebook-sales-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(480px, 0.9fr)
+    minmax(600px, 1.1fr);
+
+  align-items: center;
+
+  gap: 3vw;
+
+  padding:
+    85px
+    4.5vw
+    90px;
+}
+
+
+/* ==========================================================
+   TEXTO
+========================================================== */
+
+.ebook-sales-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 670px;
+}
+
+
+/* TEXTO PEQUENO */
+
+.ebook-sales-eyebrow {
+  margin:
+    0
+    0
+    25px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.24em;
+
+  text-transform: uppercase;
+
+  color: #454545;
+}
+
+
+/* ==========================================================
+   TÍTULO
+========================================================== */
+
+.ebook-sales-title {
+  width: 100%;
+
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: clamp(
+    48px,
+    4.4vw,
+    72px
+  );
+
+  font-weight: 400;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+
+  color: #0b0b0b;
+}
+
+
+.ebook-sales-title span {
+  display: block;
+
+  font-weight: 400;
+}
+
+
+.ebook-sales-title strong {
+  display: block;
+
+  margin-top: 8px;
+
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   LINHA
+========================================================== */
+
+.ebook-sales-line {
+  width: 90px;
+  height: 2px;
+
+  margin:
+    34px
+    0
+    32px;
+
+  background: #111;
+}
+
+
+/* ==========================================================
+   SUBTÍTULO
+========================================================== */
+
+.ebook-sales-subtitle {
+  margin:
+    0
+    0
+    22px;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  line-height: 1.25;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* ==========================================================
+   LISTA
+========================================================== */
+
+.ebook-sales-list {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.ebook-sales-item {
+  display: grid;
+
+  grid-template-columns:
+    18px
+    1fr;
+
+  align-items: flex-start;
+
+  gap: 11px;
+
+  padding:
+    14px
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(17, 17, 17, 0.12);
+}
+
+
+.ebook-sales-item:last-child {
+  border-bottom: none;
+}
+
+
+.ebook-sales-symbol {
+  position: relative;
+
+  top: 4px;
+
+  font-size: 10px;
+
+  color: #111;
+}
+
+
+.ebook-sales-item p {
+  width: 100%;
+
+  max-width: 590px;
+
+  margin: 0;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.48;
+
+  color: #303030;
+}
+
+
+/* ==========================================================
+   BOTÃO
+========================================================== */
+
+.ebook-sales-actions {
+  width: 100%;
+
+  max-width: 470px;
+
+  margin-top: 30px;
+}
+
+
+.ebook-sales-button {
+  width: 100%;
+  min-height: 66px;
+
+  padding:
+    0
+    27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #111;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  transition:
+    transform 300ms ease,
+    background 300ms ease;
+}
+
+
+.ebook-sales-button:hover {
+  transform: translateY(-2px);
+
+  background: #242424;
+}
+
+
+.ebook-sales-button span:first-child {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.ebook-sales-arrow {
+  font-size: 22px;
+
+  transition:
+    transform 300ms ease;
+}
+
+
+.ebook-sales-button:hover
+.ebook-sales-arrow {
+  transform: translateX(5px);
+}
+
+
+.ebook-sales-secure {
+  margin:
+    13px
+    0
+    0;
+
+  text-align: center;
+
+  font-size: 9px;
+
+  letter-spacing: 0.18em;
+
+  color: #555;
+}
+
+
+/* ==========================================================
+   IMAGEM DO LIVRO + CELULAR
+========================================================== */
+
+.ebook-sales-product {
+  position: relative;
+
+  width: 100%;
+  height: 78vh;
+
+  min-height: 620px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: visible;
+}
+
+
+.ebook-sales-product-image {
+  display: block;
+
+  width: 115%;
+  height: 100%;
+
+  max-width: 950px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  transform:
+    translateX(2vw)
+    scale(1.03);
+
+  filter:
+    drop-shadow(
+      0
+      30px
+      35px
+      rgba(0, 0, 0, 0.18)
+    );
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+
+  .ebook-sales-container {
+    grid-template-columns:
+      minmax(400px, 0.95fr)
+      minmax(430px, 1.05fr);
+
+    gap: 20px;
+
+    padding:
+      70px
+      35px;
+  }
+
+
+  .ebook-sales-title {
+    font-size: clamp(
+      43px,
+      5.2vw,
+      60px
+    );
+  }
+
+
+  .ebook-sales-product {
+    min-height: 560px;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 120%;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .ebook-sales {
+    min-height: auto;
+  }
+
+
+  .ebook-sales-background {
+    background-position: center;
+
+    opacity: 0.5;
+  }
+
+
+  .ebook-sales-overlay {
+    background:
+      rgba(
+        245,
+        243,
+        238,
+        0.91
+      );
+  }
+
+
+  .ebook-sales-container {
+    min-height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    padding:
+      60px
+      20px
+      65px;
+  }
+
+
+  /* PRODUTO PRIMEIRO */
+
+  .ebook-sales-product {
+    order: -1;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 0;
+
+    margin-bottom: 10px;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 115%;
+
+    height: auto;
+
+    max-width: 650px;
+
+    transform: none;
+  }
+
+
+  .ebook-sales-content {
+    max-width: none;
+  }
+
+
+  .ebook-sales-eyebrow {
+    margin-bottom: 20px;
+
+    font-size: 9px;
+  }
+
+
+  .ebook-sales-title {
+    max-width: none;
+
+    font-size: clamp(
+      42px,
+      11.5vw,
+      58px
+    );
+
+    line-height: 0.98;
+  }
+
+
+  .ebook-sales-line {
+    margin:
+      28px
+      0;
+  }
+
+
+  .ebook-sales-subtitle {
+    font-size: 18px;
+  }
+
+
+  .ebook-sales-item {
+    gap: 9px;
+
+    padding:
+      13px
+      0;
+  }
+
+
+  .ebook-sales-item p {
+    max-width: none;
+
+    font-size: 14px;
+  }
+
+
+  .ebook-sales-actions {
+    max-width: none;
+  }
+
+
+  .ebook-sales-button {
+    min-height: 62px;
+
+    padding:
+      0
+      21px;
+  }
+
+
+  .ebook-sales-button span:first-child {
+    font-size: 10px;
+  }
+
+}
+
+/* ==========================================================
+   EBOOK SALES — AJUSTE FINAL
+   Fundo já preparado com degradê bege → Rio
+========================================================== */
+
+.ebook-sales {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #f5f3ee;
+}
+
+
+/* ==========================================================
+   FUNDO
+========================================================== */
+
+.ebook-sales-background {
+  display: block;
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  background-image:
+    url("/images/ebook-background.png");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+}
+
+
+/* NÃO PRECISAMOS MAIS DO FILTRO ANTIGO */
+
+.ebook-sales-overlay {
+  display: none;
+}
+
+
+/* ==========================================================
+   CONTEÚDO
+========================================================== */
+
+.ebook-sales-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(100%, 1540px);
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding:
+    70px
+    4.5vw
+    80px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.12fr);
+
+  gap: clamp(
+    45px,
+    6vw,
+    100px
+  );
+
+  align-items: center;
+}
+
+
+/* ==========================================================
+   LADO ESQUERDO
+========================================================== */
+
+.ebook-sales-copy {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  max-width: 650px;
+}
+
+
+/* EYEBROW */
+
+.ebook-sales-eyebrow {
+  margin-bottom: 26px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  color: #555;
+}
+
+
+/* ==========================================================
+   TÍTULO
+   DIMINUÍDO EM RELAÇÃO AO ANTERIOR
+========================================================== */
+
+.ebook-sales-title {
+  width: 100%;
+  max-width: 610px;
+
+  margin: 0;
+
+  font-size: clamp(
+    43px,
+    3.7vw,
+    61px
+  );
+
+  font-weight: 400;
+
+  line-height: 0.99;
+
+  letter-spacing: -0.045em;
+
+  color: #0b0b0b;
+}
+
+
+.ebook-sales-title span {
+  display: block;
+
+  font-weight: 400;
+}
+
+
+.ebook-sales-title strong {
+  display: block;
+
+  margin-top: 7px;
+
+  font-weight: 600;
+}
+
+
+/* LINHA */
+
+.ebook-sales-line {
+  width: 84px;
+  height: 2px;
+
+  margin:
+    34px
+    0
+    34px;
+
+  background: #111;
+}
+
+
+/* ==========================================================
+   SUBTÍTULO
+========================================================== */
+
+.ebook-sales-subtitle {
+  margin:
+    0
+    0
+    22px;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: #111;
+}
+
+
+/* ==========================================================
+   LISTA
+========================================================== */
+
+.ebook-sales-list {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.ebook-sales-list li {
+  position: relative;
+
+  padding:
+    17px
+    0
+    17px
+    30px;
+
+  border-bottom:
+    1px solid
+    rgba(15, 15, 15, 0.12);
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+
+.ebook-sales-list li::before {
+  content: "✦";
+
+  position: absolute;
+
+  top: 18px;
+  left: 0;
+
+  font-size: 9px;
+
+  color: #111;
+}
+
+
+/* ==========================================================
+   BOTÃO
+========================================================== */
+
+.ebook-sales-button {
+  width: min(
+    100%,
+    470px
+  );
+
+  min-height: 70px;
+
+  margin-top: 28px;
+
+  padding:
+    0
+    25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #111;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  border-radius: 2px;
+
+  transition:
+    transform 250ms ease,
+    background 250ms ease;
+}
+
+
+.ebook-sales-button:hover {
+  transform:
+    translateY(-2px);
+
+  background: #242424;
+}
+
+
+.ebook-sales-button span:first-child {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+
+.ebook-sales-button-arrow {
+  font-size: 25px;
+
+  font-weight: 300;
+}
+
+
+/* COMPRA SEGURA */
+
+.ebook-sales-safe {
+  width: min(
+    100%,
+    470px
+  );
+
+  margin-top: 14px;
+
+  text-align: center;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: #666;
+}
+
+
+/* ==========================================================
+   LADO DIREITO
+   LIVRO + CELULAR
+========================================================== */
+
+.ebook-sales-product {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  min-height: 680px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* IMPORTANTE:
+   o PNG do mockup precisa ter fundo transparente */
+
+.ebook-sales-product-image {
+  position: relative;
+
+  z-index: 4;
+
+  display: block;
+
+  width: 112%;
+
+  max-width: 850px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  transform:
+    translateX(1vw);
+
+  filter:
+    drop-shadow(
+      0
+      28px
+      30px
+      rgba(0, 0, 0, 0.16)
+    );
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+
+  .ebook-sales-container {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.9fr);
+
+    gap: 35px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+
+  .ebook-sales-title {
+    font-size: clamp(
+      41px,
+      4.7vw,
+      55px
+    );
+  }
+
+
+  .ebook-sales-product {
+    min-height: 580px;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 115%;
+
+    transform: none;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .ebook-sales {
+    min-height: auto;
+  }
+
+
+  .ebook-sales-background {
+    /*
+      No celular a imagem fica mais concentrada
+      no Rio, mas ainda mantém o bege.
+    */
+
+    background-size: auto 100%;
+
+    background-position: 62% center;
+  }
+
+
+  .ebook-sales-container {
+    min-height: auto;
+
+    padding:
+      65px
+      20px
+      70px;
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .ebook-sales-copy {
+    max-width: none;
+  }
+
+
+  .ebook-sales-title {
+    max-width: 520px;
+
+    font-size: clamp(
+      38px,
+      10.2vw,
+      50px
+    );
+
+    line-height: 1;
+  }
+
+
+  .ebook-sales-line {
+    margin:
+      27px
+      0
+      28px;
+  }
+
+
+  .ebook-sales-subtitle {
+    font-size: 19px;
+  }
+
+
+  .ebook-sales-list li {
+    font-size: 14px;
+
+    padding:
+      15px
+      0
+      15px
+      27px;
+  }
+
+
+  .ebook-sales-product {
+    min-height: 460px;
+
+    order: -1;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 100%;
+
+    max-width: 600px;
+
+    transform: none;
+  }
+
+
+  .ebook-sales-button {
+    width: 100%;
+
+    min-height: 66px;
+  }
+
+
+  .ebook-sales-safe {
+    width: 100%;
+  }
+
+}
+
+/* ==========================================================
+   BÔNUS — RIO INSIDE
+========================================================== */
+
+.bonus-section {
+  position: relative;
+
+  width: 100%;
+
+  /* era 330px */
+  min-height: 255px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #181818 0%,
+      #222222 48%,
+      #191919 100%
+    );
+
+  color: #f5f3ee;
+}
+
+
+/* ==========================================================
+   TEXTURA DISCRETA
+========================================================== */
+
+.bonus-section-pattern {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.12;
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(255,255,255,0.05) 0,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(255,255,255,0.04) 0,
+      transparent 30%
+    );
+}
+
+
+/* ==========================================================
+   CONTEÚDO
+========================================================== */
+
+.bonus-section-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 950px;
+
+  margin: 0 auto;
+
+  /* era 55px em cima e embaixo */
+  padding: 35px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* ==========================================================
+   TÍTULO
+========================================================== */
+
+.bonus-section-title {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(
+    42px,
+    4vw,
+    62px
+  );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
+  color: #ead6ad;
+}
+
+
+/* ==========================================================
+   DIVISOR
+========================================================== */
+
+.bonus-section-divider {
+  width: 280px;
+
+  margin:
+    25px
+    auto
+    28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+.bonus-section-divider > span:not(.bonus-section-diamond) {
+  display: block;
+
+  width: 105px;
+  height: 1px;
+
+  background:
+    rgba(234, 214, 173, 0.85);
+}
+
+
+.bonus-section-diamond {
+  position: relative;
+
+  top: -1px;
+
+  font-size: 12px;
+
+  color: #ead6ad;
+}
+
+
+/* ==========================================================
+   TEXTO
+========================================================== */
+
+.bonus-section-text {
+  margin: 0;
+
+  font-size: clamp(
+    13px,
+    1.05vw,
+    16px
+  );
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(245, 243, 238, 0.92);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .bonus-section {
+    min-height: 210px;
+  }
+
+
+  .bonus-section-content {
+    padding:
+      30px
+      20px;
+  }
+
+
+  .bonus-section-title {
+    font-size: clamp(
+      38px,
+      11vw,
+      52px
+    );
+  }
+
+
+  .bonus-section-divider {
+    width: 220px;
+
+    margin:
+      22px
+      auto
+      24px;
+  }
+
+
+  .bonus-section-divider > span:not(.bonus-section-diamond) {
+    width: 78px;
+  }
+
+
+  .bonus-section-text {
+    max-width: 520px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.12em;
+  }
+
+}
+
+/* ==========================================================
+   FEEDBACKS — RIO INSIDE
+========================================================== */
+
+.feedback-section {
+  width: 100%;
+
+  background: #f5f3ee;
+
+  color: #111;
+
+  padding:
+    2cm
+    4.5vw
+    95px;
+}
+
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.feedback-container {
+  width: 100%;
+
+  max-width: 1380px;
+
+  margin: 0 auto;
+}
+
+
+/* ==========================================================
+   CABEÇALHO
+========================================================== */
+
+.feedback-heading {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* FEEDBACKS */
+
+.feedback-label {
+  margin-bottom: 20px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.32em;
+
+  color: #b58a48;
+}
+
+
+/* TÍTULO */
+
+.feedback-heading h2 {
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0;
+
+  font-size: clamp(
+    36px,
+    3.6vw,
+    58px
+  );
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+
+  color: #111;
+}
+
+
+/* ==========================================================
+   DIVISOR DOURADO
+========================================================== */
+
+.feedback-divider {
+  width: 170px;
+
+  margin:
+    25px
+    auto
+    23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+}
+
+
+.feedback-divider span {
+  display: block;
+
+  width: 62px;
+
+  height: 1px;
+
+  background: #b58a48;
+}
+
+
+.feedback-divider strong {
+  font-size: 12px;
+
+  font-weight: 400;
+
+  color: #b58a48;
+}
+
+
+/* ==========================================================
+   DESCRIÇÃO
+========================================================== */
+
+.feedback-description {
+  color: #686868;
+
+  font-size: clamp(
+    15px,
+    1.2vw,
+    19px
+  );
+
+  line-height: 1.45;
+}
+
+
+.feedback-description p {
+  margin: 0;
+}
+
+
+/* ==========================================================
+   GRID DOS FEEDBACKS
+========================================================== */
+
+.feedback-grid {
+  width: 100%;
+
+  margin-top: 52px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  align-items: stretch;
+}
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.feedback-card {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(17, 17, 17, 0.08);
+
+  border-radius: 16px;
+
+  background: #fff;
+
+  box-shadow:
+    0
+    8px
+    28px
+    rgba(0, 0, 0, 0.045);
+
+  transition:
+    transform 350ms ease,
+    box-shadow 350ms ease;
+}
+
+
+.feedback-card:hover {
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0
+    16px
+    38px
+    rgba(0, 0, 0, 0.08);
+}
+
+
+/* IMAGEM */
+
+.feedback-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+
+  .feedback-section {
+    padding:
+      2cm
+      35px
+      85px;
+  }
+
+
+  .feedback-grid {
+    gap: 14px;
+  }
+
+
+  .feedback-heading h2 {
+    font-size: clamp(
+      34px,
+      4.5vw,
+      50px
+    );
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .feedback-section {
+    padding:
+      2cm
+      20px
+      70px;
+  }
+
+
+  .feedback-label {
+    margin-bottom: 17px;
+
+    font-size: 10px;
+  }
+
+
+  .feedback-heading h2 {
+    max-width: 520px;
+
+    font-size: clamp(
+      34px,
+      9vw,
+      48px
+    );
+
+    line-height: 1.02;
+  }
+
+
+  .feedback-divider {
+    margin:
+      21px
+      auto;
+  }
+
+
+  .feedback-description {
+    max-width: 520px;
+
+    font-size: 15px;
+  }
+
+
+  .feedback-grid {
+    margin-top: 38px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+
+  .feedback-card {
+    width: 100%;
+
+    max-width: 520px;
+
+    margin:
+      0
+      auto;
+
+    border-radius: 13px;
+  }
+
+}
+
+/* ==========================================================
+   PURCHASE CTA
+========================================================== */
+
+.purchase-cta {
+  width: 100%;
+  padding: 80px 4.5vw calc(80px - 2cm);
+
+  background: #f4f1eb;
+}
+
+.purchase-cta-box {
+  width: 100%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  padding: 72px 50px 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #302b27 0%,
+      #211e1b 100%
+    );
+
+  border-radius: 22px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* detalhe sutil */
+
+.purchase-cta-box::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  top: -270px;
+  right: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(213, 181, 126, 0.09);
+
+  pointer-events: none;
+}
+
+
+/* CONTEÚDO */
+
+.purchase-cta-content {
+  width: 100%;
+  max-width: 700px;
+
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* PREÇO */
+
+.purchase-cta-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  gap: 16px;
+
+  color: #f7f3eb;
+
+  line-height: 1;
+}
+
+.purchase-cta-installment {
+  font-size: clamp(42px, 4.3vw, 67px);
+
+  font-weight: 500;
+
+  letter-spacing: -0.045em;
+}
+
+.purchase-cta-price strong {
+  font-size: clamp(48px, 5vw, 76px);
+
+  font-weight: 600;
+
+  letter-spacing: -0.05em;
+
+  color: #d7b77d;
+}
+
+
+/* À VISTA */
+
+.purchase-cta-cash {
+  margin: 13px 0 28px;
+
+  font-size: 20px;
+  font-weight: 300;
+
+  color: rgba(247, 243, 235, 0.78);
+}
+
+
+/* BOTÃO */
+
+.purchase-cta-button {
+  width: min(100%, 470px);
+
+  min-height: 58px;
+
+  padding: 0 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 6px;
+
+  background: #d7b77d;
+
+  color: #1f1c19;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+
+  transition:
+    transform 250ms ease,
+    background 250ms ease;
+}
+
+.purchase-cta-button:hover {
+  background: #e3c893;
+
+  transform: translateY(-2px);
+}
+
+.purchase-cta-arrow {
+  font-size: 23px;
+  font-weight: 300;
+
+  transition: transform 250ms ease;
+}
+
+.purchase-cta-button:hover .purchase-cta-arrow {
+  transform: translateX(5px);
+}
+
+
+/* SEGURANÇA */
+
+.purchase-cta-secure {
+  margin: 18px 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  max-width: 600px;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.purchase-cta-check {
+  color: #d7b77d;
+
+  font-size: 14px;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .purchase-cta {
+    padding: 50px 20px 0;
+  }
+
+  .purchase-cta-box {
+    padding: 55px 24px 48px;
+
+    border-radius: 18px;
+  }
+
+  .purchase-cta-price {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+  }
+
+  .purchase-cta-installment {
+    font-size: 38px;
+  }
+
+  .purchase-cta-price strong {
+    font-size: 54px;
+  }
+
+  .purchase-cta-cash {
+    margin-top: 14px;
+
+    font-size: 17px;
+  }
+
+  .purchase-cta-button {
+    width: 100%;
+
+    min-height: 58px;
+
+    font-size: 11px;
+  }
+
+  .purchase-cta-secure {
+    font-size: 10px;
+  }
+
+}
+
+/* CORES FINAIS — BLOCO DE COMPRA */
+
+.purchase-cta-box {
+  background: #1d1d1d;
+}
+
+.purchase-cta-price {
+  color: #f5f3ee;
+}
+
+.purchase-cta-price strong {
+  color: #8faa83;
+}
+
+.purchase-cta-cash {
+  color: rgba(245, 243, 238, 0.75);
+}
+
+.purchase-cta-button {
+  background: #8faa83;
+  border-color: #8faa83;
+  color: #1d1d1d;
+}
+
+.purchase-cta-button:hover {
+  background: #a5b99b;
+}
+
+.purchase-cta-secure {
+  color: rgba(245, 243, 238, 0.62);
+}
+
+.purchase-cta-check {
+  color: #8faa83;
+}
+
+.purchase-cta-box::before {
+  background: rgba(143, 170, 131, 0.06);
+}
+
+.purchase-cta-box::before,
+.purchase-cta-box::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ==========================================================
+   FAQ — RIO INSIDE
+========================================================== */
+
+.rio-faq {
+  position: relative;
+
+  width: 100%;
+  min-height: 760px;
+
+  overflow: hidden;
+
+  background-image:
+    url("/images/faq-rio.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #f5f1e8;
+}
+
+
+/* CAMADA ESCURA SOBRE A FOTO */
+
+.rio-faq-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 15, 14, 0.88) 0%,
+      rgba(15, 15, 14, 0.80) 42%,
+      rgba(15, 15, 14, 0.68) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* CONTEÚDO */
+
+.rio-faq-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1500px;
+
+  min-height: 760px;
+
+  margin: 0 auto;
+
+  padding:
+    105px
+    4.5vw
+    100px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 0.75fr)
+    minmax(550px, 1.25fr);
+
+  gap: 9vw;
+}
+
+
+/* ==========================================================
+   TÍTULO
+========================================================== */
+
+.rio-faq-heading {
+  align-self: start;
+}
+
+
+.rio-faq-eyebrow {
+  display: block;
+
+  margin-bottom: 30px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.32em;
+
+  text-transform: uppercase;
+
+  color: #c9a665;
+}
+
+
+.rio-faq-heading h2 {
+  margin: 0;
+
+  font-size: clamp(
+    56px,
+    5.6vw,
+    90px
+  );
+
+  font-weight: 400;
+
+  line-height: 0.88;
+
+  letter-spacing: -0.055em;
+
+  color: #f5f1e8;
+}
+
+
+.rio-faq-heading p {
+  max-width: 380px;
+
+  margin:
+    38px
+    0
+    0;
+
+  font-size: 16px;
+
+  line-height: 1.55;
+
+  color:
+    rgba(245, 241, 232, 0.65);
+}
+
+
+/* ==========================================================
+   PERGUNTAS
+========================================================== */
+
+.rio-faq-list {
+  width: 100%;
+}
+
+
+.rio-faq-item {
+  width: 100%;
+
+  border-bottom:
+    1px solid
+    rgba(245, 241, 232, 0.30);
+}
+
+
+/* REMOVE SETA PADRÃO */
+
+.rio-faq-item summary {
+  list-style: none;
+}
+
+.rio-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+
+/* PERGUNTA */
+
+.rio-faq-item summary {
+  min-height: 105px;
+
+  padding:
+    28px
+    0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  cursor: pointer;
+
+  font-size: clamp(
+    22px,
+    2vw,
+    31px
+  );
+
+  font-weight: 400;
+
+  line-height: 1.12;
+
+  letter-spacing: -0.035em;
+
+  color: #f5f1e8;
+
+  transition:
+    color 250ms ease;
+}
+
+
+.rio-faq-item summary:hover {
+  color: #d5b875;
+}
+
+
+/* ==========================================================
+   BOTÃO +
+========================================================== */
+
+.rio-faq-plus {
+  position: relative;
+
+  flex:
+    0
+    0
+    48px;
+
+  width: 48px;
+  height: 48px;
+
+  border:
+    1px solid
+    rgba(201, 166, 101, 0.75);
+
+  border-radius: 50%;
+
+  transition:
+    background 250ms ease,
+    transform 350ms ease;
+}
+
+
+/* LINHA HORIZONTAL */
+
+.rio-faq-plus::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 16px;
+  height: 1px;
+
+  background: #d5b875;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* LINHA VERTICAL */
+
+.rio-faq-plus::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 1px;
+  height: 16px;
+
+  background: #d5b875;
+
+  transform:
+    translate(-50%, -50%);
+
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+
+/* QUANDO ABERTO */
+
+.rio-faq-item[open]
+.rio-faq-plus {
+  background:
+    rgba(201, 166, 101, 0.14);
+}
+
+
+.rio-faq-item[open]
+.rio-faq-plus::after {
+  opacity: 0;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg);
+}
+
+
+/* ==========================================================
+   RESPOSTA
+========================================================== */
+
+.rio-faq-answer {
+  max-width: 760px;
+
+  padding:
+    0
+    75px
+    32px
+    0;
+
+  animation:
+    faqOpen
+    350ms
+    ease;
+}
+
+
+.rio-faq-answer p {
+  margin:
+    0
+    0
+    12px;
+
+  font-size: 16px;
+
+  line-height: 1.62;
+
+  color:
+    rgba(245, 241, 232, 0.72);
+}
+
+
+.rio-faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+
+@keyframes faqOpen {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1050px) {
+
+  .rio-faq-container {
+    grid-template-columns:
+      0.8fr
+      1.2fr;
+
+    gap: 6vw;
+  }
+
+
+  .rio-faq-heading h2 {
+    font-size:
+      clamp(
+        48px,
+        6.5vw,
+        70px
+      );
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .rio-faq {
+    min-height: auto;
+
+    background-position:
+      58%
+      center;
+  }
+
+
+  .rio-faq-overlay {
+    background:
+      rgba(15, 15, 14, 0.82);
+  }
+
+
+  .rio-faq-container {
+    min-height: auto;
+
+    padding:
+      75px
+      20px
+      70px;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 55px;
+  }
+
+
+  .rio-faq-heading h2 {
+    font-size:
+      clamp(
+        46px,
+        14vw,
+        66px
+      );
+  }
+
+
+  .rio-faq-heading p {
+    margin-top: 26px;
+  }
+
+
+  .rio-faq-item summary {
+    min-height: 90px;
+
+    padding:
+      24px
+      0;
+
+    font-size:
+      clamp(
+        20px,
+        6vw,
+        26px
+      );
+  }
+
+
+  .rio-faq-plus {
+    flex-basis: 42px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+
+  .rio-faq-answer {
+    padding:
+      0
+      15px
+      28px
+      0;
+  }
+
+
+  .rio-faq-answer p {
+    font-size: 15px;
+  }
+
+}
+
+/* =========================================================
+   GARANTIA
+========================================================= */
+
+.rio-guarantee {
+  background: #f3f0e9;
+  padding: 110px 30px 120px;
+}
+
+.rio-guarantee-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rio-guarantee-eyebrow {
+  display: block;
+  margin-bottom: 25px;
+
+  color: #b99350;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+.rio-guarantee h2 {
+  margin: 0;
+
+  color: #171717;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 0.98;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.rio-guarantee-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 34px auto 35px;
+}
+
+.rio-guarantee-line span {
+  width: 80px;
+  height: 1px;
+  background: #c8a45e;
+}
+
+.rio-guarantee-line i {
+  color: #c8a45e;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.rio-guarantee-text {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.rio-guarantee-text p {
+  margin: 0 0 18px;
+
+  color: #55514b;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.rio-guarantee-text strong {
+  color: #24211d;
+  font-weight: 600;
+}
+
+.rio-guarantee-button {
+  width: min(100%, 520px);
+  min-height: 68px;
+
+  margin: 38px auto 16px;
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #d5b46f;
+  color: #171717;
+
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  border-radius: 6px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+
+.rio-guarantee-secure {
+  margin-top: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  color: #77716a;
+  font-size: 11px;
+}
+
+.rio-guarantee-secure span {
+  color: #b99350;
+  font-size: 15px;
+}
+
+@media (max-width: 700px) {
+  .rio-guarantee {
+    padding: 75px 22px 80px;
+  }
+
+  .rio-guarantee h2 {
+    font-size: 44px;
+  }
+
+  .rio-guarantee-text p {
+    font-size: 15px;
+  }
+
+  .rio-guarantee-secure {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.rio-footer {
+  background: #191919;
+  color: #f3f0e9;
+
+  padding: 75px 6% 32px;
+}
+
+.rio-footer-top {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 50px;
+}
+
+.rio-footer-brand > span,
+.rio-footer-social > span {
+  display: block;
+
+  margin-bottom: 20px;
+
+  color: #c8a45e;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.rio-footer-brand p {
+  margin: 0;
+
+  font-size: clamp(30px, 3.5vw, 52px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+}
+
+.rio-footer-social {
+  text-align: right;
+}
+
+.rio-footer-social a {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  color: #f3f0e9;
+
+  font-size: clamp(22px, 2.5vw, 36px);
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.rio-footer-social a:hover {
+  color: #d5b46f;
+}
+
+.rio-footer-social a span {
+  color: #c8a45e;
+}
+
+.rio-footer-divider {
+  max-width: 1400px;
+
+  height: 1px;
+
+  margin: 60px auto 25px;
+
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.rio-footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+
+  .rio-footer {
+    padding: 60px 24px 30px;
+  }
+
+  .rio-footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rio-footer-social {
+    text-align: left;
+  }
+
+  .rio-footer-divider {
+    margin-top: 45px;
+  }
+
+  .rio-footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* =========================================================
+   GALERIA FINAL — RIO INSIDE
+========================================================= */
+
+.final-gallery {
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #191919;
+
+  padding: 14px 0;
+}
+
+
+.final-gallery-track {
+  display: flex;
+
+  width: max-content;
+
+  animation:
+    rioFinalGallery
+    68s
+    linear
+    infinite;
+
+  will-change: transform;
+}
+
+
+.final-gallery-group {
+  display: flex;
+
+  flex-shrink: 0;
+
+  gap: 14px;
+
+  padding-right: 14px;
+}
+
+
+.final-gallery-item {
+  position: relative;
+
+  flex:
+    0
+    0
+    clamp(
+      280px,
+      26vw,
+      440px
+    );
+
+  height:
+    clamp(
+      260px,
+      31vw,
+      430px
+    );
+
+  overflow: hidden;
+
+  border-radius: 3px;
+}
+
+
+.final-gallery-item img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform
+    0.8s
+    ease;
+}
+
+
+.final-gallery-item:hover img {
+  transform: scale(1.035);
+}
+
+
+/* PAUSA NO COMPUTADOR */
+
+.final-gallery:hover
+.final-gallery-track {
+  animation-play-state: paused;
+}
+
+
+/* LOOP REALMENTE INFINITO */
+
+@keyframes rioFinalGallery {
+
+  from {
+    transform:
+      translateX(0);
+  }
+
+  to {
+    transform:
+      translateX(-50%);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .final-gallery {
+    padding:
+      10px
+      0;
+  }
+
+  .final-gallery-track {
+    animation-duration:
+      60s;
+  }
+
+  .final-gallery-group {
+    gap: 10px;
+
+    padding-right: 10px;
+  }
+
+  .final-gallery-item {
+    flex-basis: 75vw;
+
+    height: 370px;
+  }
+
+}
+
+
+/* =========================================================
+   FOOTER — RIO INSIDE
+========================================================= */
+
+.rio-footer {
+  width: 100%;
+
+  background: #191919;
+  color: #f3f0e9;
+
+  padding: 85px 6% 30px;
+}
+
+
+/* PARTE PRINCIPAL */
+
+.rio-footer-main {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 60px;
+}
+
+
+/* LABELS DOURADAS */
+
+.rio-footer-label {
+  display: block;
+
+  margin-bottom: 22px;
+
+  color: #c8a45e;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+}
+
+
+/* FRASE PRINCIPAL */
+
+.rio-footer-brand h2 {
+  margin: 0;
+
+  color: #f3f0e9;
+
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1.03;
+
+  font-weight: 400;
+
+  letter-spacing: -1.8px;
+}
+
+
+/* INSTAGRAM */
+
+.rio-footer-social {
+  text-align: right;
+}
+
+.rio-footer-social a {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+
+  color: #f3f0e9;
+
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400;
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.rio-footer-social a:hover {
+  color: #d5b46f;
+}
+
+.rio-footer-arrow {
+  color: #c8a45e;
+
+  transition: transform 0.25s ease;
+}
+
+.rio-footer-social a:hover .rio-footer-arrow {
+  transform: translate(4px, -4px);
+}
+
+
+/* LINHA */
+
+.rio-footer-divider {
+  width: 100%;
+  max-width: 1400px;
+
+  height: 1px;
+
+  margin: 65px auto 27px;
+
+  background: rgba(255, 255, 255, 0.14);
+}
+
+
+/* DIREITOS RESERVADOS */
+
+.rio-footer-bottom {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* TERMOS */
+
+.rio-footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.rio-footer-legal a {
+  color: rgba(255, 255, 255, 0.42);
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.rio-footer-legal a:hover {
+  color: #c8a45e;
+}
+
+.rio-footer-legal > span {
+  color: #c8a45e;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .final-gallery {
+    padding: 10px 0;
+  }
+
+  .final-gallery-track {
+    gap: 10px;
+
+    animation-duration: 64s;
+  }
+
+  .final-gallery-item {
+    flex-basis: 75vw;
+
+    height: 370px;
+  }
+
+
+  .rio-footer {
+    padding: 65px 24px 28px;
+  }
+
+  .rio-footer-main {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 55px;
+  }
+
+  .rio-footer-social {
+    text-align: left;
+  }
+
+  .rio-footer-divider {
+    margin: 50px auto 25px;
+  }
+
+  .rio-footer-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 13px;
+  }
+
+  .rio-footer-legal {
+    justify-content: flex-start;
+
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .final-gallery-track {
+    animation: none;
+  }
+}
+
+/* ==========================================================
+   HERO MOBILE — AJUSTE DE MARGENS
+========================================================== */
+
+@media (max-width: 768px) {
+
+  /* bloco do texto principal da capa */
+  .hero-content {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: 20px !important;
+
+    width: auto !important;
+  }
+
+  .hero-content h1 {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(48px, 13vw, 68px);
+    line-height: 0.92;
+  }
+
+  .hero-location {
+    margin-bottom: 8px;
+  }
+}
+
+/* ==========================================================
+   HERO — AJUSTE FINAL DE POSICIONAMENTO
+========================================================== */
+
+.hero-content {
+  left: 1cm !important;
+  right: 1cm !important;
+  bottom: 1cm !important;
+
+  width: auto !important;
+}
+
+/* garante que o texto pequeno comece exatamente
+   no mesmo ponto do título */
+.hero-location {
+  width: 100% !important;
+
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+
+  text-align: left !important;
+}
+
+.hero-content h1 {
+  width: 100% !important;
+
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* ==========================================================
+   HERO — MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .hero-content {
+    left: 1cm !important;
+    right: 1cm !important;
+    bottom: 1cm !important;
+  }
+
+  .hero-location {
+    margin-bottom: 9px !important;
+
+    font-size: 11px !important;
+
+    letter-spacing: 0.24em !important;
+  }
+
+  /* um pouco menor apenas no celular */
+  .hero-content h1 {
+    font-size: clamp(
+      43px,
+      11.5vw,
+      58px
+    ) !important;
+
+    line-height: 0.91 !important;
+
+    letter-spacing: -0.045em !important;
+  }
+}
+
+/* ==========================================================
+   INSIDE EXPERIENCE — SWIPE MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .inside-experience-viewport {
+    width: 100%;
+
+    overflow: hidden;
+
+    padding-left: 20px;
+
+    touch-action: pan-y;
+
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .inside-experience-track {
+    touch-action: pan-y;
+  }
+
+  .inside-experience-card {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
 }
