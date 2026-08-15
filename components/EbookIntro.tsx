@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/language-context";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 const ebookData = {
   PT: {
@@ -154,6 +155,7 @@ export default function EbookIntro() {
 
             <a
               href={t.checkout}
+              onClick={() => trackBeginCheckout(language, t.checkout)}
               target="_blank"
               rel="noopener noreferrer"
               className="ebook-sales-button"

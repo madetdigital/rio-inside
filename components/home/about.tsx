@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/context/language-context";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 const translations = {
   PT: {
@@ -147,6 +148,7 @@ export default function About() {
               <a
                 className="about-guide-button"
                 href={t.checkout}
+                onClick={() => trackBeginCheckout(language, t.checkout)}
                 target="_blank"
                 rel="noopener noreferrer"
               >

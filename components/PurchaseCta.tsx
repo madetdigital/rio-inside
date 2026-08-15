@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/language-context";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 const content = {
   PT: {
@@ -61,6 +62,7 @@ export default function PurchaseCta() {
 
           <a
             href={t.checkout}
+            onClick={() => trackBeginCheckout(language, t.checkout)}
             target="_blank"
             rel="noopener noreferrer"
             className="purchase-cta-button"
