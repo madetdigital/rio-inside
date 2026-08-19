@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/language-context";
-import { trackBeginCheckout } from "@/lib/analytics";
+import styles from "./ebook-sales.module.css";
 
 const ebookData = {
   PT: {
@@ -98,27 +98,27 @@ export default function EbookIntro() {
   const t = ebookData[language];
 
   return (
-    <section id="ebook" className="ebook-sales">
+    <section id="ebook" className={styles["ebook-sales"]}>
 
       {/* FOTO DE FUNDO */}
-      <div className="ebook-sales-background" />
+      <div className={styles["ebook-sales-background"]} />
 
       {/* FILTRO CLEAN */}
-      <div className="ebook-sales-overlay" />
+      <div className={styles["ebook-sales-overlay"]} />
 
-      <div className="ebook-sales-container">
+      <div className={styles["ebook-sales-container"]}>
 
         {/* =====================================================
             TEXTO
         ====================================================== */}
 
-        <div className="ebook-sales-content">
+        <div className={styles["ebook-sales-content"]}>
 
-          <p className="ebook-sales-eyebrow">
+          <p className={styles["ebook-sales-eyebrow"]}>
             {t.eyebrow}
           </p>
 
-          <h2 className="ebook-sales-title">
+          <h2 className={styles["ebook-sales-title"]}>
             <span>{t.titleStart}</span>
 
             {t.titleHighlight && (
@@ -126,26 +126,18 @@ export default function EbookIntro() {
             )}
           </h2>
 
-          <div className="ebook-sales-line" />
+          <div className={styles["ebook-sales-line"]} />
 
-          <p className="ebook-sales-subtitle">
+          <p className={styles["ebook-sales-subtitle"]}>
             {t.subtitle}
           </p>
 
-          <div className="ebook-sales-list">
+          <div className={styles["ebook-sales-list"]}>
 
             {t.items.map((item, index) => (
-              <div
-                key={index}
-                className="ebook-sales-item"
-              >
-
-                <span className="ebook-sales-symbol">
-                  ✦
-                </span>
-
+              <div key={index} className={styles["ebook-sales-item"]}>
+                <span className={styles["ebook-sales-symbol"]}>✦</span>
                 <p>{item}</p>
-
               </div>
             ))}
 
@@ -154,20 +146,17 @@ export default function EbookIntro() {
           <div className="ebook-sales-actions">
 
             <a
-              href={t.checkout}
-              onClick={() => trackBeginCheckout(language, t.checkout)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ebook-sales-button"
+              href="#comprar"
+              className={styles["ebook-sales-button"]}
             >
               <span>{t.button}</span>
 
-              <span className="ebook-sales-arrow">
+              <span className={styles["ebook-sales-arrow"]}>
                 →
               </span>
             </a>
 
-            <p className="ebook-sales-secure">
+            <p className={styles["ebook-sales-secure"]}>
               {t.secure}
             </p>
 
@@ -180,13 +169,13 @@ export default function EbookIntro() {
             MOCKUP QUE VOCÊ VAI CRIAR
         ====================================================== */}
 
-        <div className="ebook-sales-product">
+        <div className={styles["ebook-sales-product"]}>
 
           <img
             key={language}
             src={t.productImage}
             alt="Rio Inside Ebook"
-            className="ebook-sales-product-image"
+            className={styles["ebook-sales-product-image"]}
           />
 
         </div>

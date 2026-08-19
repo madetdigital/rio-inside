@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/language-context";
-import { trackBeginCheckout } from "@/lib/analytics";
 
 const photos = [
   "/images/about-1.jpeg",
@@ -128,10 +127,7 @@ export default function AboutStory() {
 
               <a
                 className="about-story-button"
-                href={t.checkout}
-                onClick={() => trackBeginCheckout(language, t.checkout)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#comprar"
               >
                 <span>{t.button}</span>
                 <span aria-hidden="true">↗</span>

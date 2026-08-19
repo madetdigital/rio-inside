@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/context/language-context";
-import { trackBeginCheckout } from "@/lib/analytics";
 import heroImage from "@/public/images/rio-hero.jpeg";
 
 const translations = {
@@ -197,10 +196,7 @@ export default function Hero() {
             >
               {/* BOTÃO PRINCIPAL */}
               <a
-                href={t.checkout}
-                onClick={() => trackBeginCheckout(language, t.checkout)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#comprar"
                 style={{ paddingLeft: "1cm", paddingRight: "0.5cm" }}
                 className="
                   group

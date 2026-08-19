@@ -1,0 +1,528 @@
+.ebook-sales {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: #f5f3ee;
+}
+
+
+/* ==========================================================
+   FUNDO
+========================================================== */
+
+.ebook-sales-background {
+  display: block;
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  background-image:
+    url("/images/ebook-background.jpeg");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+}
+
+
+/* NÃO PRECISAMOS MAIS DO FILTRO ANTIGO */
+
+.ebook-sales-overlay {
+  display: none;
+}
+
+
+/* ==========================================================
+   CONTEÚDO
+========================================================== */
+
+.ebook-sales-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(100%, 1540px);
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding:
+    70px
+    4.5vw
+    80px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.88fr)
+    minmax(0, 1.12fr);
+
+  gap: clamp(
+    45px,
+    6vw,
+    100px
+  );
+
+  align-items: center;
+}
+
+
+/* ==========================================================
+   LADO ESQUERDO
+========================================================== */
+
+.ebook-sales-content {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+  max-width: 650px;
+}
+
+
+/* EYEBROW */
+
+.ebook-sales-eyebrow {
+  margin-bottom: 26px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+
+  text-transform: uppercase;
+
+  color: #555;
+}
+
+
+/* ==========================================================
+   TÍTULO
+   DIMINUÍDO EM RELAÇÃO AO ANTERIOR
+========================================================== */
+
+.ebook-sales-title {
+  width: 100%;
+  max-width: 610px;
+
+  margin: 0;
+
+  font-size: clamp(
+    43px,
+    3.7vw,
+    61px
+  );
+
+  font-weight: 400;
+
+  line-height: 0.99;
+
+  letter-spacing: -0.045em;
+
+  color: #0b0b0b;
+}
+
+
+.ebook-sales-title span {
+  display: block;
+
+  font-weight: 400;
+}
+
+
+.ebook-sales-title strong {
+  display: block;
+
+  margin-top: 7px;
+
+  font-weight: 600;
+}
+
+
+/* LINHA */
+
+.ebook-sales-line {
+  width: 84px;
+  height: 2px;
+
+  margin:
+    34px
+    0
+    34px;
+
+  background: #111;
+}
+
+
+/* ==========================================================
+   SUBTÍTULO
+========================================================== */
+
+.ebook-sales-subtitle {
+  margin:
+    0
+    0
+    22px;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  color: #111;
+}
+
+
+/* ==========================================================
+   LISTA
+========================================================== */
+
+.ebook-sales-list {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* cada item no JSX é um bloco com .ebook-sales-item e um span .ebook-sales-symbol */
+.ebook-sales-item {
+  position: relative;
+
+  padding:
+    17px
+    0
+    17px
+    30px;
+
+  border-bottom:
+    1px solid
+    rgba(15, 15, 15, 0.12);
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+.ebook-sales-symbol {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  font-size: 9px;
+  color: #111;
+}
+
+
+/* ==========================================================
+   BOTÃO
+========================================================== */
+
+.ebook-sales-button {
+  width: min(
+    100%,
+    470px
+  );
+
+  min-height: 70px;
+
+  margin-top: 28px;
+
+  padding:
+    0
+    25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #111;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  border-radius: 2px;
+
+  transition:
+    transform 250ms ease,
+    background 250ms ease;
+}
+
+
+.ebook-sales-button:hover {
+  transform:
+    translateY(-2px);
+
+  background: #242424;
+}
+
+
+.ebook-sales-button span:first-child {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+
+.ebook-sales-arrow {
+  font-size: 25px;
+
+  font-weight: 300;
+}
+
+
+/* COMPRA SEGURA */
+
+.ebook-sales-secure {
+  width: min(
+    100%,
+    470px
+  );
+
+  margin-top: 14px;
+
+  text-align: center;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: #666;
+}
+
+
+/* ==========================================================
+   LADO DIREITO
+   LIVRO + CELULAR
+========================================================== */
+
+.ebook-sales-product {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  min-height: 680px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* IMPORTANTE:
+   o PNG do mockup precisa ter fundo transparente */
+
+.ebook-sales-product-image {
+  position: relative;
+
+  z-index: 4;
+
+  display: block;
+
+  width: 112%;
+
+  max-width: 850px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  transform:
+    translateX(1vw);
+
+  filter:
+    drop-shadow(
+      0
+      28px
+      30px
+      rgba(0, 0, 0, 0.16)
+    );
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+
+  .ebook-sales-container {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.9fr);
+
+    gap: 35px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+
+  .ebook-sales-title {
+    font-size: clamp(
+      41px,
+      4.7vw,
+      55px
+    );
+  }
+
+
+  .ebook-sales-product {
+    min-height: 580px;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 115%;
+
+    transform: none;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .ebook-sales {
+    min-height: auto;
+  }
+
+
+  .ebook-sales-background {
+    /*
+      No celular a imagem fica mais concentrada
+      no Rio, mas ainda mantém o bege.
+    */
+
+    background-size: auto 100%;
+
+    background-position: 62% center;
+  }
+
+
+  .ebook-sales-container {
+    min-height: auto;
+
+    padding:
+      65px
+      20px
+      70px;
+
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .ebook-sales-content {
+    max-width: none;
+  }
+
+
+  .ebook-sales-title {
+    max-width: 520px;
+
+    font-size: clamp(
+      38px,
+      10.2vw,
+      50px
+    );
+
+    line-height: 1;
+  }
+
+
+  .ebook-sales-line {
+    margin:
+      27px
+      0
+      28px;
+  }
+
+
+  .ebook-sales-subtitle {
+    font-size: 19px;
+  }
+
+
+  .ebook-sales-item {
+    font-size: 14px;
+
+    padding:
+      15px
+      0
+      15px
+      27px;
+  }
+
+
+  .ebook-sales-product {
+    min-height: 460px;
+
+    order: -1;
+  }
+
+
+  .ebook-sales-product-image {
+    width: 100%;
+
+    max-width: 600px;
+
+    transform: none;
+  }
+
+
+  .ebook-sales-button {
+    width: 100%;
+
+    min-height: 66px;
+  }
+
+
+  .ebook-sales-secure {
+    width: 100%;
+  }
+
+}
+
+
+
+
+

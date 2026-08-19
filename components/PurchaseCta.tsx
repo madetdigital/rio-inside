@@ -41,7 +41,7 @@ export default function PurchaseCta() {
   const t = content[language] ?? content.PT;
 
   return (
-    <section className="purchase-cta">
+    <section id="comprar" className="purchase-cta">
       <div className="purchase-cta-box">
 
         <div className="purchase-cta-content">
