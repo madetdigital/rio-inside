@@ -5,7 +5,6 @@ import {
   ReactNode,
   useContext,
   useEffect,
-  useState,
 } from "react";
 
 export type Language = "PT" | "EN" | "ES";
@@ -19,30 +18,25 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("PT");
-
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: {
+  children: ReactNode;
+  initialLanguage: Language;
+}) {
   useEffect(() => {
-    const savedLanguage = localStorage.getItem(
-      "rioinside-language"
-    ) as Language | null;
-
-    if (
-      savedLanguage === "PT" ||
-      savedLanguage === "EN" ||
-      savedLanguage === "ES"
-    ) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
+    localStorage.setItem("rioinside-language", initialLanguage);
+  }, [initialLanguage]);
 
   function changeLanguage(newLanguage: Language) {
-    setLanguage(newLanguage);
     localStorage.setItem("rioinside-language", newLanguage);
   }
 
   return (
-    <LanguageContext.Provider value={{ language, changeLanguage }}>
+    <LanguageContext.Provider
+      value={{ language: initialLanguage, changeLanguage }}
+    >
       {children}
     </LanguageContext.Provider>
   );

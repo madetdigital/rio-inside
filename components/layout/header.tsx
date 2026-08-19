@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Language,
   useLanguage,
@@ -42,6 +43,7 @@ const translations = {
 };
 
 export default function Header() {
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
 
@@ -51,6 +53,9 @@ export default function Header() {
   function selectLanguage(lang: Language) {
     changeLanguage(lang);
     setLanguageOpen(false);
+    router.push(
+      `/${lang.toLowerCase()}${window.location.search}${window.location.hash}`
+    );
   }
 
   const menuItems = [
